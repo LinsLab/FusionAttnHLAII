@@ -1,4 +1,4 @@
-#FusionAttnHLAII
+# FusionAttnHLAII
 
 ## Overview
     This repository is the source code of our paper "FusionAttnHLAII: A Hierarchical Model for Predicting HLA II–Peptide Interactions"
