@@ -20,7 +20,7 @@ from copy import deepcopy
 from Loader import train_predict_div,collate
 from model import DualEncoderModel
 from pytorchtools import EarlyStopping
-from train_test_lihua import train,predicting
+from train_test import train,predicting
 
 
 if __name__=='__main__':
