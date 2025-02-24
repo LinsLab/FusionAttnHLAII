@@ -53,16 +53,16 @@ def sub_dataset_graph_more(ax, data, mg_hla_data):
     # **Step 1: 获取自动生成的第一个图例**
     handles1, labels1 = ax.get_legend_handles_labels()
 
-    # **Step 2: 创建 FusionAttnHLAII 的单独图例**
-    fusion_legend = [Rectangle((0, 0), 1, 1, edgecolor='black', facecolor='none', linestyle='--', linewidth=1.5, label='FusionAttnHLAII')]
+    # **Step 2: 创建 FusionHLAII 的单独图例**
+    fusion_legend = [Rectangle((0, 0), 1, 1, edgecolor='black', facecolor='none', linestyle='--', linewidth=1.5, label='FusionHLAII')]
 
     # **Step 3: 在左上角显示单独的 FusionAttnHLAII 图例**
     second_legend = ax.legend(handles=fusion_legend, loc='upper right', fontsize=12, frameon=False)
     ax.add_artist(second_legend)
     
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/Independent-subset Metrics.png',bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/Independent-subset Metrics.pdf',bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/Independent-subset Metrics.svg',bbox_inches="tight")
+    plt.savefig('../figure/Independent-subset Metrics.png',bbox_inches="tight")
+    plt.savefig('../figure/Independent-subset Metrics.pdf',bbox_inches="tight")
+    plt.savefig('../figure/Independent-subset Metrics.svg',bbox_inches="tight")
 
     # **返回第一个图例供外部使用**
     return handles1, labels1
@@ -101,7 +101,7 @@ def plot_performance_combined(ax, results):
         method_x_positions = np.linspace(center - margin, center + margin, len(baseline_methods))
         for j, method in enumerate(baseline_methods):
             baseline_val = results.get(method, {}).get(metric, None)
-            fusion_key = "FusionAttnHLAII_" + method
+            fusion_key = "FusionHLAII_" + method
             fusion_val = results.get(fusion_key, {}).get(metric, None)
             
             if baseline_val is not None:
@@ -132,7 +132,7 @@ def plot_performance_combined(ax, results):
     # **创建红色和黑色点的第二个图例**
     custom_lines = [
         Line2D([0], [0], marker='o', color='w', label='Baseline Methods', markerfacecolor='black', markersize=12),
-        Line2D([0], [0], marker='o', color='w', label='FusionAttnHLAII', markerfacecolor='red', markersize=12)
+        Line2D([0], [0], marker='o', color='w', label='FusionHLAII', markerfacecolor='red', markersize=12)
     ]
 
     # **使用 `add_artist` 来显示第二个图例，不覆盖第一个图例**
@@ -140,9 +140,9 @@ def plot_performance_combined(ax, results):
     ax.add_artist(second_legend)
     
     # 保存图像（根据需要修改保存路径）
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/external_Metrics.png', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/external_Metrics.pdf', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/external_Metrics.svg', bbox_inches="tight")
+    plt.savefig('../figure/external_Metrics.png', bbox_inches="tight")
+    plt.savefig('../figure/external_Metrics.pdf', bbox_inches="tight")
+    plt.savefig('../figure/external_Metrics.svg', bbox_inches="tight")
 
     # **返回第一个图例的 handles 和 labels 供外部使用**
     return handles1, labels1,legend_elements
@@ -216,13 +216,10 @@ if __name__ == '__main__':
     fig_leg.savefig('legend1.pdf', dpi=300, bbox_inches='tight', transparent=True)
     fig_leg.savefig('legend1.svg', dpi=300, bbox_inches='tight', transparent=True)
     '''
-    mapping = select_colors_for_methods_seaborn()
-    print(mapping)
     
     
     fig1, ax1 = plt.subplots(figsize=(10, 6))
-    mapping = select_colors_for_methods_seaborn()
-    print(mapping)
+    
 
     data = np.array([
         [68.77, 64.46, 28.90, 67.95],  # comblib
@@ -237,14 +234,14 @@ if __name__ == '__main__':
     ])
 
     mg_hla_data = np.array([
-        [93.42, 85.54, 71.06, 86.08],  # FusionAttnHLAII-comblib
-        [92.54, 84.55, 69.11, 85.00],  # FusionAttnHLAII-Consensus
-        [92.18, 84.17, 68.34, 84.62],  # FusionAttnHLAII-SMM
-        [95.37, 88.13, 76.25, 88.45],  # FusionAttnHLAII-Netmhcpan_el
-        [95.37, 88.13, 76.25, 88.45],   # FusionAttnHLAII-Netmhcpan_el-4.2
-        [95.37, 88.13, 76.25, 88.45],  #FusionAttnHLAII-Netmhcpan_ba
-        [95.37, 88.13, 76.25, 88.45], #FusionAttnHLAII_Netmhcpan_ba-4.2
-        [95.37, 88.13, 76.25, 88.45] #FusionAttnHLAII_HLAIImaster-35
+        [93.42, 85.54, 71.06, 86.08],  # FusionHLAII-comblib
+        [92.54, 84.55, 69.11, 85.00],  # FusionHLAII-Consensus
+        [92.18, 84.17, 68.34, 84.62],  # FusionHLAII-SMM
+        [95.37, 88.13, 76.25, 88.45],  # FusionHLAII-Netmhcpan_el
+        [95.37, 88.13, 76.25, 88.45],   # FusionHLAII-Netmhcpan_el-4.2
+        [95.37, 88.13, 76.25, 88.45],  #FusionHLAII-Netmhcpan_ba
+        [95.37, 88.13, 76.25, 88.45], #FusionHLAII_Netmhcpan_ba-4.2
+        [95.37, 88.13, 76.25, 88.45] #FusionHLAII_HLAIImaster
     ])
     
     
@@ -275,15 +272,15 @@ if __name__ == '__main__':
     "smm":               {"AUC": 67.69, "ACC": 62.77, "MCC": 26.02, "F1": 63.00},
     "HLAIImaster":       {"AUC": 73.77, "ACC": 66.63, "MCC":32.12, "F1": 70.7},
 
-    # 对应FusionAttnHLAII在各基线方法可预测子集上的结果，键名格式为"FusionAttnHLAII_基线方法名"
-    "FusionAttnHLAII_NetMHCIIpan-EL-4.2": {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
-    "FusionAttnHLAII_NetMHCIIpan-BA-4.2": {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
-    "FusionAttnHLAII_NetMHCIIpan-EL":    {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
-    "FusionAttnHLAII_NetMHCIIpan-BA":    {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
-    "FusionAttnHLAII_Consensus3":        {"AUC": 77.83, "ACC": 70.69, "MCC": 41.85, "F1": 71.13},
-    "FusionAttnHLAII_Comblib":           {"AUC": 76.30, "ACC": 69.77, "MCC": 39.52, "F1":69.01},
-    "FusionAttnHLAII_smm":       {"AUC": 78.15, "ACC": 71.12, "MCC": 42.68, "F1": 71.48},
-    "FusionAttnHLAII_HLAIImaster":       {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
+    # 对应FusionHLAII在各基线方法可预测子集上的结果，键名格式为"FusionAttnHLAII_基线方法名"
+    "FusionHLAII_NetMHCIIpan-EL-4.2": {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
+    "FusionHLAII_NetMHCIIpan-BA-4.2": {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
+    "FusionHLAII_NetMHCIIpan-EL":    {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
+    "FusionHLAII_NetMHCIIpan-BA":    {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
+    "FusionHLAII_Consensus3":        {"AUC": 77.83, "ACC": 70.69, "MCC": 41.85, "F1": 71.13},
+    "FusionHLAII_Comblib":           {"AUC": 76.30, "ACC": 69.77, "MCC": 39.52, "F1":69.01},
+    "FusionHLAII_smm":       {"AUC": 78.15, "ACC": 71.12, "MCC": 42.68, "F1": 71.48},
+    "FusionHLAII_HLAIImaster":       {"AUC": 77.15, "ACC": 70.20, "MCC": 40.90, "F1": 71.43},
     }
     
     handles2, labels2,legend_elements=plot_performance_combined(ax2,results)
@@ -308,8 +305,8 @@ if __name__ == '__main__':
     ax_leg.axis('off')  # 隐藏坐标轴
 
     # 保存图例
-    fig_leg.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/legend1.pdf', dpi=300, bbox_inches='tight', transparent=True)
-    fig_leg.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/legend1.png', dpi=300, bbox_inches='tight', transparent=True)
+    fig_leg.savefig('../figure/legend1.pdf', dpi=300, bbox_inches='tight', transparent=True)
+    fig_leg.savefig('../figure/legend1.png', dpi=300, bbox_inches='tight', transparent=True)
     #fig_leg.savefig('legend1.svg', dpi=300, bbox_inches='tight', transparent=True)
 
     

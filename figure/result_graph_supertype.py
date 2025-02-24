@@ -26,7 +26,7 @@ def plot_performance(performance):
                 'DR': {'comblib': auc5, 'Consensus': auc6, ...}
             }
         方法包括：comblib、Consensus、SMM、Netmhcpan_el、Netmhcpan_el-4.2、
-                Netmhcpan_ba、Netmhcpan_ba-4.2、HLAIImaster、FusionAttnHLAII.
+                Netmhcpan_ba、Netmhcpan_ba-4.2、HLAIImaster、FusionHLAII.
                 
     效果：
         - 横轴为 DP, DQ, DR 三组
@@ -50,7 +50,7 @@ def plot_performance(performance):
     '''
     
     methods = ['comblib', 'Consensus', 'SMM', 'Netmhcpan_ba', 'Netmhcpan_ba-4.2',
-               'Netmhcpan_el', 'Netmhcpan_el-4.2', 'HLAIImaster', 'FusionAttnHLAII']
+               'Netmhcpan_el', 'Netmhcpan_el-4.2', 'HLAIImaster', 'FusionHLAII']
     color_palette = sns.color_palette("Blues", n_colors=len(methods))
     groups = ['DP', 'DQ', 'DR']
     
@@ -92,9 +92,9 @@ def plot_performance(performance):
     plt.tight_layout()
     
     
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype.png', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype.pdf', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype.svg', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype.png', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype.pdf', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype.svg', bbox_inches="tight")
     
     plt.show()
     
@@ -114,7 +114,7 @@ def plot_hla_prediction_counts(data):
     """
     
     methods = ['comblib', 'Consensus3', 'SMM', 'Netmhcpan_ba', 'Netmhcpan_ba-4.2',
-               'Netmhcpan_el', 'Netmhcpan_el-4.2', 'HLAIImaster', 'FusionAttnHLAII']
+               'Netmhcpan_el', 'Netmhcpan_el-4.2', 'HLAIImaster', 'FusionHLAII']
     
     x = range(len(methods))
     
@@ -141,9 +141,9 @@ def plot_hla_prediction_counts(data):
     plt.xticks(fontsize=16)
     plt.yticks(fontsize=16)
     
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype_number.png', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype_number.pdf', bbox_inches="tight")
-    plt.savefig('/home/layomi/drive1/项目代码/HLA-II_code/HLAII_MODEL/figure/supertype/supertype_number.svg', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype_number.png', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype_number.pdf', bbox_inches="tight")
+    plt.savefig('../figure/supertype/supertype_number.svg', bbox_inches="tight")
 
 
 # 示例：构造一个性能字典后进行绘图
@@ -152,18 +152,18 @@ if __name__ == "__main__":
     performance = {
         'DP': {'comblib':68.78 , 'Consensus': 73.81, 'SMM': 75.67, 'Netmhcpan_el': 91.51,
                'Netmhcpan_el-4.2':  90.45, 'Netmhcpan_ba': 81.88, 'Netmhcpan_ba-4.2': 83.79,
-               'HLAIImaster': 96.69, 'FusionAttnHLAII': 98.76},
+               'HLAIImaster': 96.69, 'FusionHLAII': 98.76},
         'DQ': {'comblib': 63.43, 'Consensus': 77.09, 'SMM': 78.40, 'Netmhcpan_el': 68.54,
                'Netmhcpan_el-4.2': 79.02, 'Netmhcpan_ba': 80.63, 'Netmhcpan_ba-4.2': 83.62,
-               'HLAIImaster': 85.00, 'FusionAttnHLAII': 90.30},
+               'HLAIImaster': 85.00, 'FusionHLAII': 90.30},
         'DR': {'comblib': 71.00, 'Consensus': 81.23, 'SMM': 81.63, 'Netmhcpan_el': 83.81,
                'Netmhcpan_el-4.2': 83.30, 'Netmhcpan_ba':88.47, 'Netmhcpan_ba-4.2': 89.22,
-               'HLAIImaster': 87.36, 'FusionAttnHLAII': 91.54}
+               'HLAIImaster': 87.36, 'FusionHLAII': 91.54}
     }
     
     plot_performance(performance)
     
-    '''
+    
     # 构造一个示例数据嵌套字典，每个类别下各方法对应的预测数量
     data = {
         'DP': {
@@ -175,7 +175,7 @@ if __name__ == "__main__":
             'Netmhcpan_el': 13,
             'Netmhcpan_el-4.2': 13,
             'HLAIImaster': 13,
-            'FusionAttnHLAII': 13
+            'FusionHLAII': 13
         },
         'DQ': {
             'comblib': 6,
@@ -186,7 +186,7 @@ if __name__ == "__main__":
             'Netmhcpan_el': 25,
             'Netmhcpan_el-4.2': 25,
             'HLAIImaster': 25,
-            'FusionAttnHLAII': 25
+            'FusionHLAII': 25
         },
         'DR': {
             'comblib': 5,
@@ -197,9 +197,9 @@ if __name__ == "__main__":
             'Netmhcpan_el': 46,
             'Netmhcpan_el-4.2': 46,
             'HLAIImaster': 46,
-            'FusionAttnHLAII': 46
+            'FusionHLAII': 46
         }
     }
     
     plot_hla_prediction_counts(data)
-    '''
+    

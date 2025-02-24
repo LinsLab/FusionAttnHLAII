@@ -1,7 +1,7 @@
-# FusionAttnHLAII
+# FusionHLAII
 
 ## Overview
-    This repository is the source code of our paper "FusionAttnHLAII: A Hierarchical Model for Predicting HLA II–Peptide Interactions"
+    This repository is the source code of our paper "FusionHLAII: A Hierarchical Model for Predicting HLA II–Peptide Interactions"
 
 ## Environment Setting
     This code is based on Pytorch. You can find the specific environment and packages in the requirements.txt file.
@@ -19,8 +19,8 @@
     feature_extraction.py: Contact graph: Residue physicochemical property extraction.
     performance.py: Performance metric calculation.
     test.py: Testing on various datasets.
-    FusionAttnHLAII_GRU.py:abaltion study code
-    FusionAttnHLAII_NoEncoder.py:ablation study code
+    FusionHLAII_GRU.py:abaltion study code
+    FusionHLAII_NoEncoder.py:ablation study code
 
 
 
